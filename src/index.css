@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .custom-collapse .collapse {
+    display: block;
+  }
+}
+
+
+.card {
+  text-align: left;
+  color: rgb(57, 64, 30);
+  width: 18rem;
+  margin: 10px;
+  height: 50rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 20rem;
+  }
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  flex: 1 0 auto;
+  cursor: pointer;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+

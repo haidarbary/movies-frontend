@@ -1,0 +1,15 @@
+{
+  "ExternalAPIUrl": "https://api.themoviedb.org/3/",
+  "ImagesDirectory": "http://image.tmdb.org/t/p/w500/",
+  "GenresEndpoint" : "genre/movie/list",
+  "PopularMoviesEndPoint": "movie/popular/",
+  "DiscoverMoviesEndPoint": "discover/movie",
+  "SearchMoviesEndPoint": "search/movie",
+  "MovieDetailsEndPoint": "movie/",
+  "MovieCreditsEndPoint": "/credits",
+  "MovieVideosEndPoint": "/videos",
+  "WatchlistEndpoint": "Movies/get-watchlist",
+  "AddMovieEndpoint": "Movies/add",
+  "RemoveMovieEndpoint": "Movies/remove/"
+
+}
