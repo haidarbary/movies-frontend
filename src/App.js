@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     getMoviesData();
-  }, [searchText, selectedGenre]);
+  }, [searchText, selectedGenre, watchlist]);
 
   const getMoviesData = async () => {
     try {
