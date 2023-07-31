@@ -30,7 +30,26 @@ function App() {
 
   useEffect(() => {
     getMoviesData();
-  }, [searchText, selectedGenre, watchlist]);
+  }, [searchText, selectedGenre]);
+
+  useEffect(() => {
+    updatedMovies();
+  }, [watchlist]);
+
+  const updatedMovies = async () => {
+    // Checks if movies are in watchlist
+    let updatedMovies = _.cloneDeep(movies);
+    if (watchlist && watchlist.length > 0) {
+      updatedMovies = updatedMovies.map((movie) => {
+        let isInWatchlist = _.some(watchlist, { id: movie.id });
+        return {
+          ...movie,
+          addedToWatchlist: isInWatchlist,
+        };
+      });
+    }
+    setMovies(updatedMovies);
+  }
 
   const getMoviesData = async () => {
     try {
@@ -104,7 +123,7 @@ function App() {
       let updatedMovies = [...movies, ...newMovies];
       let newPage = page + 1;
       let newRemaining = remaining - 1;
-
+      
       setMovies(updatedMovies);
       setPage(newPage);
       setRemaining(newRemaining);

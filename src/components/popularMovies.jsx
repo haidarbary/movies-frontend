@@ -32,7 +32,7 @@ const PopularMovies = ({ movies, watchlist, genres, handleLoadMoreClick, handleA
   }
 
   return (
-    <Grid container>
+    <Grid container style={{justifyContent:"start"}}>
       <Grid item xs={12} sm={5} md={2} style={{ padding: "5px" }}>
         <div
           style={{
@@ -42,7 +42,7 @@ const PopularMovies = ({ movies, watchlist, genres, handleLoadMoreClick, handleA
             borderRadius: "12px",
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
             flex: "1",
-            minWidth: "160px",
+            minWidth: "156px",
             justifyContent:"start"
           }}
         >
@@ -79,7 +79,7 @@ const PopularMovies = ({ movies, watchlist, genres, handleLoadMoreClick, handleA
           </Select>
         </div>
       </Grid>
-      <Grid item xs={12} sm={7} md={10}>
+      <Grid item xs={12} sm={8} md={10}>
         <div
           style={{
             display: "flex",
