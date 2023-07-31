@@ -78,10 +78,10 @@ const MovieDetails = ({watchlist, handleAddMovieClick, handleRemoveMovieClick}) 
 
     const handleToggleWatchlist = () => {
       if (isInWatchlist) {
-        handleRemoveMovieClick(params.id);
+        handleRemoveMovieClick(parseInt(params.id));
       } else {
         handleAddMovieClick({
-          id: params.id,
+          id: parseInt(params.id),
           title: title,
           overview: overview,
           release_date: release_date,

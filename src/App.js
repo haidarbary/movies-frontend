@@ -32,26 +32,6 @@ function App() {
     getMoviesData();
   }, [searchText, selectedGenre]);
 
-  // Whenever the watchlist is updated
-  useEffect(() => {
-    updateMovies();
-  }, [watchlist]);
-
-  // Checks if movies are in watchlist and updates the property "addedToWatchlist"
-  const updateMovies = async () => {
-    let updatedMovies = _.cloneDeep(movies);
-    if (watchlist && watchlist.length > 0) {
-      updatedMovies = updatedMovies.map((movie) => {
-        let isInWatchlist = _.some(watchlist, { id: movie.id });
-        return {
-          ...movie,
-          addedToWatchlist: isInWatchlist,
-        };
-      });
-    }
-    setMovies(updatedMovies);
-  }
-
   // Gets Movies from Movie-DB API and the watchlist from the Backend API and applies filters
   const getMoviesData = async () => {
     try {
@@ -147,9 +127,12 @@ function App() {
       let result = await removeMovieFromWatchlist(movieID);
 
       // Update the state
-      let updatedMovies = movies.map((m) =>
+      let updatedMovies = _.cloneDeep(movies);
+
+      updatedMovies = updatedMovies.map((m) =>
         m.id === movieID ? { ...m, addedToWatchlist: false } : m
       );
+
       setMovies(updatedMovies);
 
       // Update the Watchlist

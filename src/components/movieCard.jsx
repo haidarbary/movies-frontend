@@ -18,8 +18,6 @@ const MovieCard = ({
   watchlist
 }) => {
 
-  const [isInWatchlist, setIsInWatchlist] = useState(addedToWatchlist);
-
   const trimOverview = (overview) => {
     const maxLength = 250;
     if (overview.length > maxLength) {
@@ -29,7 +27,7 @@ const MovieCard = ({
   };
 
   const handleToggleWatchlist = () => {
-    if (isInWatchlist) {
+    if (addedToWatchlist) {
       handleRemoveMovieClick(id);
     } else {
       handleAddMovieClick({
@@ -40,7 +38,6 @@ const MovieCard = ({
         poster_path: poster_path,
       });
     }
-    setIsInWatchlist(!isInWatchlist);
   };
 
   const cardRef = useRef(null);
@@ -82,7 +79,7 @@ const MovieCard = ({
           }}
         >
           <div onClick={handleToggleWatchlist}>
-            {isInWatchlist ? (
+            {addedToWatchlist ? (
               <CheckCircleIcon style={{ fontSize: 32, color: "#4CAF50" }} />
             ) : (
               <AddCircleOutlineIcon style={{ fontSize: 32, color: "#2196F3" }} />
