@@ -32,12 +32,13 @@ function App() {
     getMoviesData();
   }, [searchText, selectedGenre]);
 
+  // Whenever the watchlist is updated
   useEffect(() => {
-    updatedMovies();
+    updateMovies();
   }, [watchlist]);
 
-  const updatedMovies = async () => {
-    // Checks if movies are in watchlist
+  // Checks if movies are in watchlist and updates the property "addedToWatchlist"
+  const updateMovies = async () => {
     let updatedMovies = _.cloneDeep(movies);
     if (watchlist && watchlist.length > 0) {
       updatedMovies = updatedMovies.map((movie) => {
@@ -51,6 +52,7 @@ function App() {
     setMovies(updatedMovies);
   }
 
+  // Gets Movies from Movie-DB API and the watchlist from the Backend API and applies filters
   const getMoviesData = async () => {
     try {
       // Get the movie genres from Movie-DB API
@@ -76,22 +78,10 @@ function App() {
         newMovies = movies;
       }
 
-      // Checks if movies are in watchlist
-      let updatedMovies = _.cloneDeep(newMovies);
-      if (watchlist && watchlist.length > 0) {
-        updatedMovies = updatedMovies.map((movie) => {
-          let isInWatchlist = _.some(watchlist, { id: movie.id });
-          return {
-            ...movie,
-            addedToWatchlist: isInWatchlist,
-          };
-        });
-      }
-
       let newRemaining = 39259 - 1; // For Load more movies
 
       setGenres(genres);
-      setMovies(updatedMovies);
+      setMovies(newMovies);
       setWatchlist(watchlist);
       setPage(2);
       setRemaining(newRemaining);
